@@ -9,11 +9,14 @@ module.exports = (obj) => {
         let currentObj = obj;
         while(path.length){
             const currentKey = path.shift();
-            if(!currentObj[currentKey]){
+            if(!path.length){
                 currentObj[currentKey] = obj[cle];
                 break;
             }
             if(currentObj[currentKey]){
+                currentObj = currentObj[currentKey];
+            } else {
+                currentObj[currentKey] = {}
                 currentObj = currentObj[currentKey];
             }
         }
